@@ -1,0 +1,18 @@
+{
+  "name": "jit-hackathon-backend",
+  "version": "1.0.0",
+  "description": "Express.js & MongoDB backend for JITUrnHACK '26 registration",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "sharp": "^0.35.5"
+  }
+}

@@ -1,6 +1,6 @@
-# ⚡ JITUrnHACK '26 Backend (Express.js & MongoDB)
+# ⚡ JITHON '27 Backend (Express.js & MongoDB)
 
-Backend service for **JITUrnHACK '26 // JIT College of Engineering** handling hacker registrations, unique VIP digital pass minting, and attendee statistics with MongoDB Atlas.
+Backend service for **JITHON '27 // JIT College of Engineering** handling hacker registrations, unique VIP digital pass minting, and attendee statistics with MongoDB Atlas.
 
 ---
 
@@ -75,7 +75,7 @@ CLIENT_URL=http://localhost:5173
     "role": "Full-Stack Degen",
     "track": "Autonomous AI",
     "mode": "JIT Campus (In-Person)",
-    "confCode": "#JIT-VH-43837",
+    "confCode": "#JITHON-43837",
     "venue": "JIT Campus Labs & Auditorium",
     "createdAt": "2026-09-29T06:15:11.953Z"
   }

@@ -4,6 +4,9 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { connectDB } from './config/db.js';
 import registrationRoutes from './routes/registrationRoutes.js';
+import settingRoutes from './routes/settingRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import { seedAdminUser } from './controllers/adminAuthController.js';
 
 // Load environment variables
 dotenv.config();
@@ -13,6 +16,7 @@ const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB Atlas
 await connectDB();
+await seedAdminUser();
 
 // Middleware
 app.use(
@@ -41,11 +45,13 @@ app.get('/api/health', (req, res) => {
 
 // Mount Routes
 app.use('/api', registrationRoutes);
+app.use('/api', settingRoutes);
+app.use('/api', adminRoutes);
 
 // Root route
 app.get('/', (req, res) => {
   res.json({
-    service: "JITUrnHACK '26 Registration API",
+    service: "JITHON '27 Registration API",
     status: 'Running',
     endpoints: {
       health: 'GET /api/health',
@@ -75,6 +81,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 JITUrnHACK '26 Backend server running at http://localhost:${PORT}`);
+  console.log(`🚀 JITHON '27 Backend server running at http://localhost:${PORT}`);
   console.log(`📡 Registration API available at http://localhost:${PORT}/api/register`);
 });

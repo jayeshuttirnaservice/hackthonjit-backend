@@ -9,7 +9,7 @@ async function generateUniqueConfirmationCode() {
   let code = '';
   while (!isUnique) {
     const randomDigits = Math.floor(10000 + Math.random() * 90000);
-    code = `#JIT-VH-${randomDigits}`;
+    code = `#JITHON-${randomDigits}`;
     const existing = await Registration.findOne({ confirmationCode: code });
     if (!existing) {
       isUnique = true;
@@ -55,7 +55,7 @@ export async function createRegistration(req, res) {
     if (existingRegistration) {
       return res.status(409).json({
         success: false,
-        message: 'This email is already registered for JITUrnHACK \'26!',
+        message: 'This email is already registered for JITHON \'27!',
         data: {
           confCode: existingRegistration.confirmationCode,
           name: existingRegistration.name,

@@ -1,7 +1,7 @@
 {
   "name": "jit-hackathon-backend",
   "version": "1.0.0",
-  "description": "Express.js & MongoDB backend for JITUrnHACK '26 registration",
+  "description": "Express.js & MongoDB backend for JITHON '27 registration",
   "main": "src/server.js",
   "type": "module",
   "scripts": {

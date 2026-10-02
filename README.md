@@ -48,7 +48,7 @@ CLIENT_URL=http://localhost:5173
 | `GET` | `/api/health` | Health check & MongoDB connection status |
 | `POST` | `/api/register` | Register an attendee & dynamically mint a VIP pass |
 | `GET` | `/api/registrations` | Fetch registered attendees (paginated) |
-| `GET` | `/api/registrations/stats` | Live count of attendees, in-person vs virtual & tracks |
+| `GET` | `/api/registrations/stats` | Live count of attendees & tracks |
 
 ### Sample Registration Payload (`POST /api/register`)
 ```json

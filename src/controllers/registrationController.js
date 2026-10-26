@@ -1,5 +1,10 @@
 import Registration from '../models/Registration.js';
 import { compressAndSaveImage } from '../utils/imageCompressor.js';
+import {
+  sendRegistrationReceivedEmail,
+  sendRegistrationApprovedEmail,
+  sendRegistrationRejectedEmail,
+} from '../utils/emailService.js';
 import fs from 'fs';
 import path from 'path';
 
@@ -100,6 +105,11 @@ export async function createRegistration(req, res) {
     });
 
     const saved = await registration.save();
+
+    // Send confirmation acknowledgment email asynchronously via ZeptoMail
+    sendRegistrationReceivedEmail(saved).catch((err) =>
+      console.error('Background email dispatch failed (Registration Received):', err)
+    );
 
     return res.status(201).json({
       success: true,
@@ -205,6 +215,11 @@ export async function approveRegistration(req, res) {
       });
     }
 
+    // Send official approval entry pass email asynchronously via ZeptoMail
+    sendRegistrationApprovedEmail(updated).catch((err) =>
+      console.error('Background email dispatch failed (Registration Approved):', err)
+    );
+
     return res.status(200).json({
       success: true,
       message: `Registration for team "${updated.teamName}" approved!`,
@@ -236,6 +251,12 @@ export async function rejectRegistration(req, res) {
         message: 'Registration not found',
       });
     }
+
+    const reason = req.body?.reason || '';
+    // Send rejection notification email with organizer contact details asynchronously
+    sendRegistrationRejectedEmail(updated, reason).catch((err) =>
+      console.error('Background email dispatch failed (Registration Rejected):', err)
+    );
 
     return res.status(200).json({
       success: true,
